@@ -10,7 +10,6 @@ gem 'haml'
 gem 'stringex'
 gem 'activeadmin'
 
-
 # Use unicorn as the web server
 # gem 'unicorn'
 
