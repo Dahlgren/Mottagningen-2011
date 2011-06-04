@@ -1,2 +1,2 @@
-class Mux < Fadder
+class Mux < ActiveRecord::Base
 end

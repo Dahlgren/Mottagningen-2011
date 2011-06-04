@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110604172904) do
+ActiveRecord::Schema.define(:version => 20110604172905) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -59,11 +59,11 @@ ActiveRecord::Schema.define(:version => 20110604172904) do
 
   create_table "muxes", :force => true do |t|
     t.string   "name"
-    t.string   "fb_id"
     t.string   "title"
     t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "facebookid"
   end
 
   create_table "pages", :force => true do |t|
