@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def show
-    @page = Page.where(:id => params[:url]).first
+    @page = Page.where(:url => params[:id]).first
   end
 end
