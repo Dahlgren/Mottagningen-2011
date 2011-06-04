@@ -1,0 +1,11 @@
+%div#schedule
+  -@today= Date.today 
+  -@days.each do |day|
+    %div.day
+      - if day.date == @today
+        %div.date.today= day.date.day
+      - else
+        %div.date= day.date.day
+      %h2= day.title
+      %p.content= day.text
+    %div.clear
