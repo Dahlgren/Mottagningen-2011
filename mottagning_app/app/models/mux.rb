@@ -1,0 +1,2 @@
+class Mux < Fadder
+end
