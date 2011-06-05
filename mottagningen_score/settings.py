@@ -1,5 +1,7 @@
 # Django settings for mottagningen_django project.
 
+import os.path
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -103,7 +105,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'mottagningen_score.urls'
 
 TEMPLATE_DIRS = (
-    '/Users/alberthafvenstrom/Code/mottagningen_score/templates'
+    '/Users/alberthafvenstrom/Code/mottagningen_score/templates/',
+    os.path.join(os.path.abspath(os.path.dirname(__file__)), 'templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -145,3 +148,9 @@ LOGGING = {
         },
     }
 }
+
+# import logging
+# logging.basicConfig(
+#     level = logging.DEBUG,
+#     format = '%(asctime)s %(levelname)s %(message)s',
+# )
