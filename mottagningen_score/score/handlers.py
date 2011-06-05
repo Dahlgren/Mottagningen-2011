@@ -9,7 +9,7 @@ class ScoreHandler(BaseHandler):
     allowed_methods = ('GET')
         
     def read(self, request, nr=0):
-        points = []
+        score = []
         if (nr == "0"):
             groups = Group.objects.all()
             days = Day.objects.all()
@@ -20,7 +20,7 @@ class ScoreHandler(BaseHandler):
                     dayInfo.append({
                         g.name: d.score(g)
                     })
-                points.append({d.name: dayInfo})      
+                score.append({d.name: dayInfo})      
         else:
             groups = Group.objects.all()
             day = Day.objects.get(number=nr)
@@ -29,27 +29,36 @@ class ScoreHandler(BaseHandler):
                 dayInfo.append({
                     g.name: g.score(day)
                 })
-            points.append({day.name: dayInfo})
+            score.append({day.name: dayInfo})
             
         return {
-            'points': points
+            'score': score
         }
         
 class PostScoreHandler(BaseHandler):
     allowed_methods = ('GET')
     
     def read(self, request):
-        # , key, id, activity, score, comment
         key = request.GET.get('key', '')
         try:
             auth = Key.objects.get(key=key) != None
         except ObjectDoesNotExist:
-            return "LOL"
+            return {'info': [{'status': 1}]}
         
         if auth:
-            return "OK"
+            group = request.GET.get('group', '')
+            day = request.GET.get('day', '')
+            score = request.GET.get('score', '')
+            comment = request.GET.get('comment', '')
+            
+            s = Score(group=Group.objects.get(number=group), 
+                      day=Day.objects.get(number=day),
+                      score=score,
+                      comment=comment)
+            s.save()
+            return {'info': [{'status': 0}]}
         else:
-            return "LOL"
+            return {'info': [{'status': 1}]}
         
 class GroupsHandler(BaseHandler):
     allowed_methods = ('GET')
@@ -66,5 +75,22 @@ class GroupsHandler(BaseHandler):
         return {
             'info': [{'status': 0}],
             'groups': groupsInfo
+        }
+        
+class DaysHandler(BaseHandler):
+    allowed_methods = ('GET')
+
+    def read(self, request):
+        daysInfo = []
+        days = Day.objects.all()
+        for d in days:
+            daysInfo.append({
+            'id': d.number,
+            'day': d.name
+            })
+
+        return {
+            'info': [{'status': 0}],
+            'days': daysInfo
         }
         
