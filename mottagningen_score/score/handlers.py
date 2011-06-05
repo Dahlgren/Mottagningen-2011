@@ -41,11 +41,11 @@ class PostScoreHandler(BaseHandler):
     def read(self, request):
         key = request.GET.get('key', '')
         try:
-            auth = Key.objects.get(key=key) != None
+            auth = Key.objects.get(key=key)
         except ObjectDoesNotExist:
             return {'info': [{'status': 1}]}
         
-        if auth:
+        if auth != None:
             group = request.GET.get('group', '')
             day = request.GET.get('day', '')
             score = request.GET.get('score', '')
@@ -54,7 +54,8 @@ class PostScoreHandler(BaseHandler):
             s = Score(group=Group.objects.get(number=group), 
                       day=Day.objects.get(number=day),
                       score=score,
-                      comment=comment)
+                      comment=comment,
+                      author=auth)
             s.save()
             return {'info': [{'status': 0}]}
         else:

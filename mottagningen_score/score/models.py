@@ -40,6 +40,7 @@ class Score(models.Model):
     score = models.FloatField()
     registered = models.BooleanField(default=False)
     comment = models.CharField(max_length = 300, null=True, blank=True)
+    author = models.ForerignKey(Key)
     
     def __unicode__(self):
         return self.day.__unicode__() + " - " + self.group.__unicode__() + " - " + str(self.score)
