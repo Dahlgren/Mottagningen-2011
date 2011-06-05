@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'haml'
 gem 'stringex'
 gem 'activeadmin'
+gem 'compass'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
