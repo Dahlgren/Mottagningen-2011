@@ -16,6 +16,10 @@ body {
     max-width: 960px;
 }
 
+a { color: #3366da;outline:0px; }
+a:link, a:visited, a:active { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
 h1 {
     font-size: 3em;
 }
@@ -25,12 +29,18 @@ h2 {
     line-height: 2em;
 }
 
+h3 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
 .clear {
     clear: both;
 }
 
 .content {
     $content-border-color: #AAA;
+    $content-border-radius: 5px;
     $content-shadow-color: #999;
     
     box-sizing: border-box;
@@ -42,10 +52,10 @@ h2 {
     -webkit-box-shadow: 0 0 7px $content-shadow-color;
     box-shadow: 0 0 7px $content-shadow-color;
     
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    -moz-border-radius: $content-border-radius;
+    -webkit-border-radius: $content-border-radius;
+    border-radius: $content-border-radius;
     
-    border-radius: 5px;
     border: 2px solid $content-border-color;
     border-top: 1px solid $content-border-color;
     background: white;
@@ -94,15 +104,29 @@ h2 {
             display: inline;
             
             li {
-                -moz-border-radius: 6px;
-                -webkit-border-radius: 6px;
+                $border-radius: 6px;
                 
-                border-radius: 6px;
+                -moz-border-radius: $border-radius;
+                -webkit-border-radius: $border-radius;
+                border-radius: $border-radius;
+                
                 float: left;
                 display: inline;
                 padding: 3px 6px;
                 border: 0px;
                 cursor: pointer;
+                
+                &.active {
+                    background: #57C914;
+                    font-size: 180%;
+                    padding: 10px 8px;
+                    position: relative;
+                    top:-7px;
+                }
+                
+                &.today {
+                    border: 2px solid #D602AC;
+                }
                 
                 &:hover {
                     color:#57C914;
@@ -111,18 +135,6 @@ h2 {
                 &:hover.active{
                     color:#fff;
                 }
-            }
-                
-            li.active {
-                background: #57C914;
-                font-size: 180%;
-                padding: 10px 8px;
-                position: relative;
-                top:-7px;
-            }
-                
-            li.today {
-                border: 2px solid #D602AC;
             }
         }
     }

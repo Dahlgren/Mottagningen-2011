@@ -23,14 +23,21 @@
             %h4 Augusti
             %ul
               - (13..31).each do |day|
-                - if @today.day() == 16
-                  %li.today= day
+                - if @today.year == 2011 && @today.month == 8 && @today.day == day
+                  %li.today
+                    = day
                 - else
-                  %li= day
+                  %li
+                    = day
             %h4 September
             %ul
               - (1..2).each do |day|
-                %li= day
+                - if @today.year == 2011 && @today.month == 9 && @today.day == day
+                  %li.today
+                    = day
+                - else
+                  %li
+                    = day
         .clear
     .container#header-fake
     .row#welcome-msg
@@ -45,3 +52,15 @@
       = image_tag('sponsors/ibm_logotype.png')
       = image_tag('sponsors/conflux_logotype.png')
       = image_tag('sponsors/actic_logotype.png')
+    
+    .row#contact
+      .onecol
+        %h3 Kontakt
+      .threecol
+        %ul
+          %li Telefon 070 398 57 63
+          %li ingen@insektionen.se
+      .fourcol
+        Skapad av Björn, Per, Carl & Martin &copy; 2011
+      .fourcol.last
+        = link_to "Sektionen för Informations och Nanoteknik", "http://insektionen.se"
