@@ -1,14 +1,18 @@
 from django.conf.urls.defaults import patterns, include, url
 
-# Piston
-from piston.resource import Resource
-
-# Piston handlers
-from mottagningen_django.score.handlers import *
+# Uncomment the next two lines to enable the admin:
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Get all devices
-    url(r'^day/(?P<nr>[^/]+)/$', Resource(handler=ScoreHandler)),
-    url(r'^groups/', Resource(handler=GroupsHandler)),
-    url(r'^post', Resource(handler=PostScoreHandler))
+    # Examples:
+    # url(r'^$', 'mottagningen_django.views.home', name='home'),
+    # url(r'^mottagningen_django/', include('mottagningen_django.foo.urls')),
+
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^score/', include('mottagningen_django.score.urls'))
 )
