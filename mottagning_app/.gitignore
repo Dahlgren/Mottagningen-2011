@@ -2,3 +2,8 @@
 db/*.sqlite3
 log/*.log
 tmp/
+
+# ignore generated css
+public/stylesheets/screen.css
+public/stylesheets/print.css
+public/stylesheets/ie.css
