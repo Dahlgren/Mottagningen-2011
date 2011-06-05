@@ -1,7 +1,17 @@
 #schedule {
     .day {
-        h2 {
+        border-bottom: 1px solid #CCC;
+        margin-bottom: 5px;
+        min-height: 100px;
+        
+        &:last-child {
+            border: 0;
+            margin-bottom: 0;
+        }
+        
+        h3 {
             display: inline;
+            font-size: 1.5em;
         }
         
         p {
@@ -9,7 +19,7 @@
         }
         
         .date {
-            border: 3px solid transparent;
+            border: 2px solid transparent;
 
             float: left;
             font-size: 2em;
@@ -17,28 +27,41 @@
 
             margin: 0.5em;
 
-            line-height: 1.5em;
-            width: 1.5em;
-            height: 1.5em;
+            line-height: 60px;
+            width: 60px;
+            height: 60px;
 
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
             border-radius: 5px;
-        }
-        
-        .date.current {
-            background-color: #3B3;
-            color: #fff;
-        }
-        
-        .date.today {
-            border-color: #FF007F;
+            
+            &.active {
+                background-color: #3B3;
+                color: #fff;
+            }
+            
+            &.today {
+                border-color: #D602AC;
 
-            -moz-box-shadow: 0px 3px 4px #888;
-            -webkit-box-shadow: 0px 3px 4px #888;
-        	box-shadow: 0px 3px 4px #888;
-        	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#888')";
-        	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#888');
+                -moz-box-shadow: 0px 3px 4px #888;
+                -webkit-box-shadow: 0px 3px 4px #888;
+            	box-shadow: 0px 3px 4px #888;
+            	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#888')";
+            	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#888');
+            }
+        }
+    }
+}
+
+@media handheld, only screen and (max-width: 480px) {
+    #schedule {
+        .day {
+            .date {
+                &.active {
+                    background: none;
+                    color: #666;
+                }
+            }
         }
     }
 }

@@ -5,8 +5,11 @@
     %meta{ :name => 'viewport', :content => 'initial-scale=1.0, maximum-scale=1.0' }
     = stylesheet_link_tag :all
     = stylesheet_link_tag "cssgrid/1140.css"
-    = javascript_include_tag :defaults
     = stylesheet_link_tag 'screen'
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"
+    = javascript_include_tag :defaults
+    = javascript_include_tag "jquery.scrollTo-min"
+    = javascript_include_tag "schedule"
     = csrf_meta_tag
     = yield :head
   %body
@@ -16,10 +19,14 @@
           = link_to image_tag('logotypes/mottagningen_kth_2011.png', :class => "logotype")
         .tencol.last
           #days
+            - @today = Date.today 
             %h4 Augusti
             %ul
-              - (15..31).each do |day|
-                %li= day
+              - (13..31).each do |day|
+                - if @today.day() == 16
+                  %li.today= day
+                - else
+                  %li= day
             %h4 September
             %ul
               - (1..2).each do |day|

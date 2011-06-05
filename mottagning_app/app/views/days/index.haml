@@ -1,6 +1,5 @@
 .container
   .row.content#schedule
-    %h2 Schema
     - @today = Date.today 
     - @days.each do |day|
       .day
@@ -10,8 +9,9 @@
         - else
           .date
             = day.date.day
-        %h3
-          = day.title
-        %p.content
-          = day.text
-      .clear
+        .text
+          %h3
+            = day.title
+          %p
+            = day.text
+        .clear

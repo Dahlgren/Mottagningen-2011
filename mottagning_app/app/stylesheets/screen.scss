@@ -11,13 +11,46 @@ body {
     color: #666;
 }
 
+/* Adjust max width */
+.row {
+    max-width: 960px;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
+    line-height: 2em;
+}
+
 .clear {
     clear: both;
 }
 
 .content {
+    $content-border-color: #AAA;
+    $content-shadow-color: #999;
+    
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    
+    -moz-box-shadow: 0 0 7px $content-shadow-color;
+    -webkit-box-shadow: 0 0 7px $content-shadow-color;
+    box-shadow: 0 0 7px $content-shadow-color;
+    
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    
+    border-radius: 5px;
+    border: 2px solid $content-border-color;
+    border-top: 1px solid $content-border-color;
     background: white;
     margin-bottom: 20px;
+    padding: 10px;
 }
 
 #header-fake {
@@ -30,9 +63,14 @@ body {
     padding: 20px 0px 0px 0px;
     height: 52px;
     color: #fff;
+    overflow: hidden;
     position: fixed;
     width: 100%;
     z-index: 10;
+    
+    .row {
+        max-width: 1024px;
+    }
     
     img.logotype {
         float: left;
@@ -42,7 +80,6 @@ body {
     
     #days {
         float: left;
-        width: 690px;
         margin-left: 45px;
         margin-top: 15px;
         
@@ -69,23 +106,23 @@ body {
                 
                 &:hover {
                     color:#57C914;
-                    
-                    .active{
-                        color:#fff;
-                    }
                 }
                 
-                .active {
-                    background: #57C914;
-                    font-size: 180%;
-                    padding: 10px 8px;
-                    position: relative;
-                    top:-7px;
+                &:hover.active{
+                    color:#fff;
                 }
+            }
                 
-                .today {
-                    border: 2px solid #D602AC;
-                }
+            li.active {
+                background: #57C914;
+                font-size: 180%;
+                padding: 10px 8px;
+                position: relative;
+                top:-7px;
+            }
+                
+            li.today {
+                border: 2px solid #D602AC;
             }
         }
     }
@@ -106,6 +143,14 @@ body {
 /* ============================= */
 
 @media handheld, only screen and (max-width: 480px) {
+    
+    .content {
+        border: 0;
+        
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        border-radius: 0;
+    }
     
     #days {
         display: none;
