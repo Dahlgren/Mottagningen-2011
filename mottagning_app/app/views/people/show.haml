@@ -1,0 +1,32 @@
+.container
+  .row.content#people
+    - [3, 2, 1].each do |index|
+      %h3
+        - case index
+        - when 3
+          = "Huvudansvariga"
+        - when 2
+          = "Programansvariga"
+        - when 1
+          = "Övriga"
+      - @muxes["#{index}"].each do |mux|
+        .mux
+          - if mux.facebookid.length > 0
+            = image_tag("http://graph.facebook.com/#{mux.facebookid}/picture?type=square")
+          - else
+            = image_tag("avatar.png")
+          %p
+            = mux.name
+          %p
+            = mux.title
+          .clear
+    %h3 Fadder
+    - @fadders.each do |fadder|
+      .fadder
+        - if fadder.facebookid.length > 0
+          = image_tag("http://graph.facebook.com/#{fadder.facebookid}/picture?type=square")
+        - else
+          = image_tag("avatar.png")
+        %p
+          = fadder.name
+        .clear
