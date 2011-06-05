@@ -1,0 +1,96 @@
+/*  Mottagningen 2011 */
+
+/* RESET */
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input { margin: 0; padding: 0; }
+h1,h2,h3,h4,h5,h6,pre,code,address,caption,cite,code,em,strong,th { font-size: 1em; font-weight: normal; font-style: normal; }
+ul,ol { list-style: none; }
+fieldset,img { border: none; }
+caption,th { text-align: left; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+
+/* LAYOUT */
+body { background: #fff url('../images/base/bg.jpg') repeat top left; font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif; color: #666; }
+img { border: 0; }
+a { color: #3366da;outline:0px; }
+a:link, a:visited, a:active { text-decoration: none; }
+a:hover { text-decoration: underline; }header
+strong, b { font-weight: bold;color:#333; }
+em, i { font-style: italic; }
+p { margin-bottom: 18px; }
+h1 { font-weight: bold; font-size: 24px; line-height: 36px; margin-bottom: 18px; }
+h2 { font-weight: bold; font-size: 16px; line-height: 18px; margin-bottom: 18px; }
+h3 { font-weight: bold; font-size: 1em; line-height: 18px; }
+h4 { font-weight: bold; font-size: 10px; line-height: 18px; }
+.clear { clear: both; }
+.clearer { clear: both; display: block; margin: 0; padding: 0; height: 0; line-height: 1px; font-size: 1px; }
+
+/* TOP */
+div#top {width:100%;background: transparent url('../images/base/bg_top_border.jpg') repeat-x top left; display: block; position: fixed; z-index: 10;}
+div#top div#header{width:900px;margin:0px auto;padding:20px 0px 0px 0px;color:#fff}
+div#top div#header img.logotype {float:left;width:155px;margin-top:4px;}
+div#top div#header div#days{float:left;width:690px;margin-left:45px;margin-top:15px;}
+div#top div#header div#days h4 {line-height:27px;margin:0px 10px;float:left;text-transform: uppercase;}
+div#top div#header div#days ul {display:inline;}
+div#top div#header div#days ul li{float:left;display:inline;padding:3px 6px;border:0px;cursor:pointer;-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;}
+div#top div#header div#days ul li.today{border: 2px solid #D602AC;}
+div#top div#header div#days ul li:hover{color:#57C914;}
+div#top div#header div#days ul li.active{background:#57C914;font-size:180%;padding:10px 8px;position: relative;top:-7px}
+div#top div#header div#days ul li:hover.active{color:#fff;}
+
+
+div#relative_container{position:relative;top:130px;left:0px;}
+div#relative_container div#welcome_message {width:966px;margin:0 auto 33px auto;}
+div#relative_container div#welcome_message img {margin-left:280px;}
+div#relative_container div.container{width:966px;margin:0 auto;background:transparent url('../images/base/container_bg.jpg') repeat-y top left;}
+div#relative_container div.container .bg_top_shadow{background:#fff url('../images/base/bg_top_shadow.jpg') no-repeat top left;width:966px;height:5px;}
+div#relative_container div.container .bg_bottom_shadow{background:transparent url('../images/base/bg_bottom_shadow.jpg') no-repeat top left;width:966px;height:10px;}
+
+/* day entry */
+div#relative_container div.container div#schedule div.day {padding:25px 30px}
+div#relative_container div.container div#schedule div.day div.date {float:left;padding:10px 8px;width:45px;-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;}
+div#relative_container div.container div#schedule div.active div.date {background:#57C914;color:#fff;}
+div#relative_container div.container div#schedule div.today div.date {border: 2px solid #D602AC;-moz-box-shadow: 0px 3px 2px #333;-webkit-box-shadow: 0px 3px 2px #333;box-shadow: 0px 3px 2px #333;}
+div#relative_container div.container div#schedule div.day div.date h2 {font-size:26px;margin-top:3px;margin-bottom:6px;text-align:center}
+div#relative_container div.container div#schedule div.day div.date p {font-size:10px;font-weight:bold;letter-spacing:3px;margin-bottom:0px;line-height:12px;text-align:center}
+
+div#relative_container div.container div#schedule div.day div.description {float:left;padding:0px 10px 0px 20px;width:470px;}
+div#relative_container div.container div#schedule div.day div.description h2 {font-size:16px;font-weight:normal;text-transform: uppercase;color:#999;display:inline;}
+div#relative_container div.container div#schedule div.day div.description p {margin-left:10px;display:inline;}
+div#relative_container div.container div#schedule div.day div.description div.pictures {margin-top:20px;}
+
+
+
+div#relative_container div.container div#schedule div.day div.thumbs {float:left;width:110px;padding:0 10px;}
+div#relative_container div.container div#schedule div.day div.thumbs img {margin-right:4px;border: 2px solid #999;}
+div#relative_container div.container div#schedule div.day div.thumbs img:hover {border-color:#333;}
+
+div#relative_container div.container div#schedule div.day div.location {float:left;width:185px;padding:0 10px;}
+
+div#relative_container div.container div#schedule hr {border:none;border-top: 1px solid #ccc;width:900px}
+div#relative_container div.container div#schedule strong { font-weight: bold;color:#444; }
+
+/* bottom */
+div#relative_container div#bottom{width:920px;margin:10px auto;}
+div#relative_container div#bottom div#customer_service{float:left;}
+div#relative_container div#bottom div#customer_service a#title{float:left;text-align:left;font:12px/40px "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;margin-right:10px;}
+div#relative_container div#bottom div#customer_service .button{width:75px;background-image:url('../images/buttons/customer_service.png');background-position:0 0px;float:left;margin-right:10px;}
+div#relative_container div#bottom div#customer_service a.button{text-align:center;font:normal 100%/43px "Lucida Grande",Lucida,Verdana,sans-serif;text-indent:-9999px;}
+div#relative_container div#bottom div#customer_service a:hover.button{background-position:0 -43px;text-decoration:none;}
+div#relative_container div#bottom #customer_service ul#description{float:left;margin-top:5px;}
+div#relative_container div#bottom #customer_service ul#description li{font:normal 11px/15px "Lucida Grande",Lucida,Verdana,sans-serif;}
+div#relative_container div#bottom #copyright{float:right;font-size:11px;}
+div#relative_container div#bottom #copyright ul.inline_list{float:right;padding:0;list-style:none;margin-top:6px}
+div#relative_container div#bottom #copyright ul.inline_list li{display:inline;margin-right:8px;}
+div#relative_container div#bottom #copyright ul.inline_list li:before{content:"|";margin-right:12px;color:#777;}
+div#relative_container div#bottom #copyright ul.inline_list .first:before{content:"" !important;}
+div#relative_container div#bottom #copyright ul.inline_list .first a{color:#666;}
+div#relative_container div#bottom #copyright ul.inline_list .last{margin-right:0px;}
+
+
+div#relative_container div#sponsors {padding: 10px 30px 20px 30px;}
+div#relative_container div#sponsors h4 {margin-bottom:10px}
+div#relative_container div#sponsors img {padding-right:62px}
+
+div#relative_container div#video_box {width:966px;margin:40px auto;padding-bottom:40px}
+div#relative_container { padding-bottom:40px;}
