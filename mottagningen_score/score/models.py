@@ -3,6 +3,9 @@ from django.db import models
 class Key(models.Model):
     key = models.CharField(max_length = 30)
     name = models.CharField(max_length = 30)
+    
+    def __unicode__(self):
+        return self.name
 
 class Group(models.Model):
     number = models.IntegerField()
@@ -20,12 +23,12 @@ class Group(models.Model):
         return self.name
 
 class Day(models.Model):
-    number = models.IntegerField()
+    date = models.IntegerField()
     name = models.CharField(max_length = 100)
     
     def score(self, group):
         sum = 0
-        scores = Score.objects.filter(group=group, day__number__lte=self.number)
+        scores = Score.objects.filter(group=group, day__date__lte=self.date)
         for s in scores:
             if s.registered:
                 sum += s.score
@@ -40,7 +43,7 @@ class Score(models.Model):
     score = models.FloatField()
     registered = models.BooleanField(default=False)
     comment = models.CharField(max_length = 300, null=True, blank=True)
-    author = models.ForerignKey(Key)
+    author = models.ForeignKey(Key)
     
     def __unicode__(self):
-        return self.day.__unicode__() + " - " + self.group.__unicode__() + " - " + str(self.score)
+        return self.day.__unicode__() + " - " + self.group.__unicode__() + " - " + str(self.score) + " - " + self.author.__unicode__()

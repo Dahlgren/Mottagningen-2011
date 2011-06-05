@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %}Score administration{% endblock %}
+
+{% block includes %}
+	<script type="text/javascript">
+		function toggleDay(day) {
+			var e = document.getElementById(day);
+			if(e.style.display == 'none')
+				e.style.display = 'block';
+			else
+			    e.style.display = 'none';
+		}
+	</script>
+{% endblock %}
+	
+{% block content %}
+	<h3>Unregistered</h3>
+	<form action="/score/admin/" method="post">
+		{% csrf_token %}
+		<select name="scores" multiple>
+			{% for score in unregistered %}
+			<option value= {{ score.id }}>{{ score }}</option>
+			{% endfor %}
+		</select><br/>
+		<input type="submit" value="Register scores">
+	</form>
+	
+	<h3>Registered</h3>
+	
+	<ul>
+	{% for day in registered %}
+		<li>
+			{% for name, scores in day.items %}
+			    <a href="#" onClick="toggleDay({{ name.date }})">{{ name }}</a>
+				<ul id="{{ name.date }}" style="display: none;">
+					{% for score in scores %}
+						<li>{{ score }}</li>
+					{% endfor%}
+				</ul>
+			{% endfor %}	
+		</li>
+	{% endfor %}
+	</ul>
+{% endblock %}

@@ -8,28 +8,30 @@ from score.models import *
 class ScoreHandler(BaseHandler):
     allowed_methods = ('GET')
         
-    def read(self, request, nr=0):
-        score = []
-        if (nr == "0"):
+    def read(self, request, id="0"):
+        score = {}
+        if (id == "0"):
             groups = Group.objects.all()
             days = Day.objects.all()
             for d in days:
-                dayInfo = []
-                dayInfo.append({'id': d.number})
+                groupsInfo = {}
                 for g in groups:
-                    dayInfo.append({
-                        g.name: d.score(g)
-                    })
-                score.append({d.name: dayInfo})      
+                    groupsInfo[g.name] = d.score(g)
+                dayInfo = {
+                    'id': d.date,
+                    'groups': groupsInfo
+                }
+                score[d.name] = dayInfo   
         else:
             groups = Group.objects.all()
-            day = Day.objects.get(number=nr)
-            dayInfo = []
+            day = Day.objects.get(date=id)
+            groupsInfo = {}
             for g in groups:
-                dayInfo.append({
-                    g.name: g.score(day)
-                })
-            score.append({day.name: dayInfo})
+                groupsInfo[g.name] = g.score(day)
+            dayInfo = {
+                'groups': groupsInfo
+            }
+            score[day.name] = dayInfo
             
         return {
             'score': score
@@ -52,7 +54,7 @@ class PostScoreHandler(BaseHandler):
             comment = request.GET.get('comment', '')
             
             s = Score(group=Group.objects.get(number=group), 
-                      day=Day.objects.get(number=day),
+                      day=Day.objects.get(date=day),
                       score=score,
                       comment=comment,
                       author=auth)
@@ -86,7 +88,7 @@ class DaysHandler(BaseHandler):
         days = Day.objects.all()
         for d in days:
             daysInfo.append({
-            'id': d.number,
+            'id': d.date,
             'day': d.name
             })
 
