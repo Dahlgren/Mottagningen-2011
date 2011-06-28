@@ -18,6 +18,17 @@
             display: inline;
         }
         
+        .timeedit {
+            float: right;
+            font-size: 0.8em;
+            min-height: 100px;
+            width: 200px;
+            
+            .time {
+                font-weight: bolder;
+            }
+        }
+        
         .date {
             $date-border-radius: 5px;
             
