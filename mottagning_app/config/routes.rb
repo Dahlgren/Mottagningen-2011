@@ -8,4 +8,6 @@ MottagningApp::Application.routes.draw do
 
   match 'page/:id', :controller => :pages, :action => :show
   
+  match 'timeedit/events', :controller => :timeedit, :action => :list
+  
 end

@@ -15,7 +15,7 @@ function select(index){
 function checkPosition(pos) {
 	dayIndex = 0;
 
-	days.each(function(index, value) {
+	jQuery.each(days, function(index, value) {
 		if (jQuery(value).offset().top - headerHeight < pos) {
 			dayIndex = index;
 		}
@@ -34,12 +34,10 @@ jQuery(document).ready(function($) {
 	
 	headerDays = $('div#header div#days li');
 	days = $('div#schedule div.day div.date');
-	
-	console.log(headerDays);
-	
+		
 	headerDays.click(function () {
 		index = headerDays.index($(this));
-		pos = days.eq(index).offset().top - headerHeight - days.eq(index).height();
+		pos = days.eq(index).offset().top - headerHeight - days.eq(index).height() + 10;
 		$.scrollTo(pos, "normal");
 	});
 	
