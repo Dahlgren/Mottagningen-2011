@@ -3,12 +3,12 @@ from django.db import models
 class Key(models.Model):
     key = models.CharField(max_length = 30)
     name = models.CharField(max_length = 30)
+    color = models.CharField(max_length = 20, null=True, blank=True)
     
     def __unicode__(self):
         return self.name
 
 class Group(models.Model):
-    number = models.IntegerField()
     name = models.CharField(max_length = 30)
     
     def score(self, day):
@@ -35,7 +35,7 @@ class Day(models.Model):
         return sum
         
     def __unicode__(self):
-        return self.name
+        return str(self.date) + ": " + self.name
     
 class Score(models.Model):
     day = models.ForeignKey(Day)
@@ -44,6 +44,6 @@ class Score(models.Model):
     registered = models.BooleanField(default=False)
     comment = models.CharField(max_length = 300, null=True, blank=True)
     author = models.ForeignKey(Key)
-    
+       
     def __unicode__(self):
-        return self.day.__unicode__() + " - " + self.group.__unicode__() + " - " + str(self.score) + " - " + self.author.__unicode__()
+        return self.day.__unicode__() + " - " + self.group.__unicode__() + " - " + str(self.score) + " - " + self.author.__unicode__() + " - " + self.comment

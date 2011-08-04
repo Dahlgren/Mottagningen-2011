@@ -4,15 +4,7 @@
 {% block title %}Score administration{% endblock %}
 
 {% block includes %}
-	<script type="text/javascript">
-		function toggleDay(day) {
-			var e = document.getElementById(day);
-			if(e.style.display == 'none')
-				e.style.display = 'block';
-			else
-			    e.style.display = 'none';
-		}
-	</script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 {% endblock %}
 	
 {% block content %}
@@ -33,14 +25,28 @@
 	{% for day in registered %}
 		<li>
 			{% for name, scores in day.items %}
-			    <a href="#" onClick="toggleDay({{ name.date }})">{{ name }}</a>
+			    <a href="#" id="{{ name.date }}_toggle">{{ name }}</a>
 				<ul id="{{ name.date }}" style="display: none;">
 					{% for score in scores %}
 						<li>{{ score }}</li>
 					{% endfor%}
 				</ul>
-			{% endfor %}	
+			{% endfor %}
 		</li>
 	{% endfor %}
 	</ul>
+	
+	<script>
+	var days = [];
+	{% for day in registered %}
+		{% for name, scores in day.items %}
+			days.push({{ name.date }});
+		{% endfor %}
+	{% endfor %}
+	$.each(days, function(index, date) {
+		$("#"+date+"_toggle").click(function() {
+			$("#"+date).toggle("slow");
+		});
+	});
+	</script>
 {% endblock %}

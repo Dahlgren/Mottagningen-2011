@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load url from future %}
+
+{% block title %}Demo{% endblock %}
+
+{% block includes %}
+	<link rel="stylesheet" href="/static/score/css/demo.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+    <script type="text/javascript" src="/static/score/js/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="/static/score/js/highcharts/themes/gray.js"></script>
+	<script type="text/javascript" src="/score/graph"></script>
+{% endblock %}
+
+{% block content %}
+<div id="graph"></div>
+<div id="group"></div>
+{% endblock %}
