@@ -42,26 +42,6 @@ def graph(request):
         group = request.GET.get('group_div')
         if not group: group = "group"
         
-        daysInfo = []
-        days = Day.objects.filter(date__lte=currentDate())
-        for d in days:
-            daysInfo.append(d.name)
-        
-        score = {}    
-        groups = Group.objects.all()
-        days = Day.objects.filter(date__lte=currentDate())
-        for g in groups:
-            groupInfo = []
-            for d in days:
-                groupInfo.append(d.score(g))
-            score[g.id] = {g.name: groupInfo}
-            
-        main_series = {
-            'days': daysInfo,
-            'score': score
-        }
-        
         return render(request, 'graph.js', {'graph_div': graph, 
-                                            'group_div': group, 
-                                            'main_series': main_series})      
+                                            'group_div': group})      
     

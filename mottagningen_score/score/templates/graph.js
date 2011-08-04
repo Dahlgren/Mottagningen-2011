@@ -1,5 +1,3 @@
-{% block script %}
-
 var mainChart;
 var groupChart;
 
@@ -10,30 +8,30 @@ var groupsDict = {};
 var groupShowing;
 
 var mainScores = [];
-var groupScores = {};
 
 function requestMain() { 
-    var main_series = JSON.parse('{{ main_series|escapejs }}');;
-    var groups = series['score'];
-    var days = series['days'];
-    
-    $.each(days, function(index, name) {
-        mainOptions.xAxis.categories.push(name);
-    });
-    
-    $.each(groups, function(id, group) {
-        $.each(group, function(name, scores) {
-            groupsDict[name] = id;
-            mainScores.push({
-                name: name,
-                data: scores
-            });
-        });  
-    });
-    
-    mainChart = new Highcharts.Chart(mainOptions);
-    $.each(mainScores, function(index, mainScore) {
-        mainChart.addSeries(mainScore, true);
+    $.getJSON('/score/day/', function(series) {
+        var groups = series['score'];
+        var days = series['days'];
+        
+        $.each(days, function(index, name) {
+            mainOptions.xAxis.categories.push(name);
+        });
+        
+        $.each(groups, function(id, group) {
+            $.each(group, function(name, scores) {
+                groupsDict[name] = id;
+                mainScores.push({
+                    name: name,
+                    data: scores
+                });
+            });  
+        });
+        
+        mainChart = new Highcharts.Chart(mainOptions);
+        $.each(mainScores, function(index, mainScore) {
+            mainChart.addSeries(mainScore, true);
+        });
     });
 }
 
@@ -103,7 +101,7 @@ mainOptions = {
     			        requestGroup(groupsDict[this.name]);
         			} else {
         			    groupShowing = ""
-        			    $('#{{ group_div }}').html("");
+        			    $('#group').html("");
         			}
         			return false;
 			    }
@@ -114,7 +112,7 @@ mainOptions = {
 
 groupOptions = {
 	chart: {
-		renderTo: {{ group_div }},
+		renderTo: '{{ group_div }}',
 		defaultSeriesType: 'bar',
 	},
 	credits: {
@@ -166,5 +164,3 @@ groupOptions = {
 $(document).ready(function() {
     requestMain();	
 });
-
-{% endblock %}
