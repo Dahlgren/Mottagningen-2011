@@ -101,7 +101,7 @@ mainOptions = {
     			        requestGroup(groupsDict[this.name]);
         			} else {
         			    groupShowing = ""
-        			    $('#group').html("");
+        			    $('#{{ group} }').html("");
         			}
         			return false;
 			    }
