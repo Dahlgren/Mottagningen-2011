@@ -58,7 +58,7 @@ mainOptions = {
 		enabled: false
 	},
 	title: {
-		text: 'Kongliga spelen'
+		text: 'Phöziaden'
 	},
 	xAxis: {
 		categories: []
