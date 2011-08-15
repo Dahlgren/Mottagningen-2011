@@ -31,8 +31,14 @@ def admin(request):
         return redirect('/score/admin')
         
 def demo(request):
+    div_height = request.GET.get('h')
+    if not div_height: div_height = "600"
+    
+    div_width = request.GET.get('w')
+    if not div_width: div_width = "1000"
+    
     if request.method == 'GET':
-        return render(request, 'demo.html')
+        return render(request, 'demo.html', {'div_height': div_height, 'div_width': div_width})
         
 def graph(request):
     if request.method == 'GET':
