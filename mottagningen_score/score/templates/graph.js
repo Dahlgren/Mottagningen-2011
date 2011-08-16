@@ -64,15 +64,15 @@ mainOptions = {
 		categories: []
 	},
 	yAxis: {
+	    labels: {
+	        enabled: false
+	    },
 		title: {
 			text: 'Poäng'
 		}
 	},
     tooltip: {
-        formatter: function() {
-            return '<b>'+ this.series.name +'</b><br/>'+
-            this.x +': '+ this.y;
-        }
+        enabled: false
     },
     legend: {
         layout: 'vertical',
