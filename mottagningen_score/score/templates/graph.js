@@ -92,19 +92,19 @@ mainOptions = {
 				}
 			},
 			events: {
-			    legendItemClick: function(event) {
-			        if(groupShowing != this.name) {
-			            groupShowing = this.name
-			            groupOptions.xAxis.categories = []
-			            groupOptions.xAxis.categories.push(this.name);
-    			        groupChart = new Highcharts.Chart(groupOptions);
-    			        requestGroup(groupsDict[this.name]);
-        			} else {
-        			    groupShowing = ""
-        			    $('#{{ group} }').html("");
-        			}
-        			return false;
-			    }
+			    // legendItemClick: function(event) {
+			    //                   if(groupShowing != this.name) {
+			    //                       groupShowing = this.name
+			    //                       groupOptions.xAxis.categories = []
+			    //                       groupOptions.xAxis.categories.push(this.name);
+			    //                       groupChart = new Highcharts.Chart(groupOptions);
+			    //                       requestGroup(groupsDict[this.name]);
+			    //                   } else {
+			    //                       groupShowing = ""
+			    //                       $('#' + {{ group }}).html("");
+			    //                   }
+			    //                   return false;
+			    //               }
 			}
 		}
 	},
