@@ -22,7 +22,7 @@ def admin(request):
         unregistered = Score.objects.filter(registered=False)
         return render(request, 'admin.html', {'registered': registered, 'unregistered': unregistered})
     elif request.method == 'POST':
-        scores = (int)request.POST.get('scores')
+        scores = int(request.POST.get('scores'))
         for s in scores:
             score = Score.objects.get(pk=s)
             score.registered = True
