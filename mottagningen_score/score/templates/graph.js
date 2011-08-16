@@ -10,6 +10,9 @@ var groupShowing;
 var mainScores = [];
 
 function requestMain() { 
+    if({{ div_width }} < 300) {
+        mainOptions.legend.enabled = false;
+    };
     $.getJSON('/score/day/', function(series) {
         var groups = series['score'];
         var days = series['days'];

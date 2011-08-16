@@ -47,6 +47,10 @@ def graph(request):
         group = request.GET.get('group_div')
         if not group: group = "group"
         
+        div_width = request.GET.get('w')
+        if not div_width: div_width = "1000"
+        
         return render(request, 'graph.js', {'graph_div': graph, 
-                                            'group_div': group})      
+                                            'group_div': group,
+                                            'div_width': div_width})      
     
