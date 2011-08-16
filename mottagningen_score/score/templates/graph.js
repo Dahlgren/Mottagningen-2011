@@ -81,7 +81,7 @@ mainOptions = {
         align: 'right',
         verticalAlign: 'top',
         x: -10,
-        y: 100,
+        y: 0,
         borderWidth: 0
     },
 	plotOptions: {
