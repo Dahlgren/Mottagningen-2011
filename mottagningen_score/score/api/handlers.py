@@ -17,7 +17,7 @@ class ScoreHandler(BaseHandler):
         score = {}
         if (date == "0"):
             groups = Group.objects.all()
-            days = Day.objects.filter(date__lte=currentDate())
+            days = Day.objects.filter(date__lte=currentDate()).order_by('date')
             for g in groups:
                 groupInfo = []
                 for d in days:
