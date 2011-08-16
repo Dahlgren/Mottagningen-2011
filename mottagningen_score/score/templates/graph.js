@@ -72,7 +72,9 @@ mainOptions = {
 		}
 	},
     tooltip: {
-        enabled: false
+        formatter: function() {
+            return '<b>'+ this.series.name + '</b>';
+        }
     },
     legend: {
         layout: 'vertical',
