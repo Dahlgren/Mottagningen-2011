@@ -24,7 +24,7 @@ def admin(request):
     elif request.method == 'POST':
         scores = request.POST.get('scores')
         for s in scores:
-            score = Score.objects.get(id=s)
+            score = Score.objects.get(pk=s)
             score.registered = True
             score.save()
             
