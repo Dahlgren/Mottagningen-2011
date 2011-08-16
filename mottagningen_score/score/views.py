@@ -22,11 +22,10 @@ def admin(request):
         unregistered = Score.objects.filter(registered=False)
         return render(request, 'admin.html', {'registered': registered, 'unregistered': unregistered})
     elif request.method == 'POST':
-        scores = int(request.POST.get('scores'))
-        for s in scores:
-            score = Score.objects.get(pk=s)
-            score.registered = True
-            score.save()
+        score_id = int(request.POST.get('scores'))
+        score = Score.objects.get(pk=score_id)
+        score.registered = True
+        score.save()
             
         return redirect('/score/admin')
         
