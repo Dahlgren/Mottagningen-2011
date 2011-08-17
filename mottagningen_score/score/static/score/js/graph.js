@@ -17,7 +17,6 @@ function requestMain() {
         $.each(days, function(index, name) {
             mainOptions.xAxis.categories.push(name);
         });
-        mainOptions.xAxis.categories.sort();
         
         $.each(groups, function(id, group) {
             $.each(group, function(name, scores) {

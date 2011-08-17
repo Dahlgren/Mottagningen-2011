@@ -17,8 +17,16 @@ function requestMain() {
         var groups = series['score'];
         var days = series['days'];
         
-        $.each(days, function(index, name) {
-            mainOptions.xAxis.categories.push(name);
+        var sorted_days_keys = [];
+        
+        $.each(days, function(key,name) {
+            sorted_days_keys.push(key);
+        });
+        
+        sorted_days_keys.sort();
+        
+        $.each(sorted_days_keys, function(index, key) {
+            mainOptions.xAxis.categories.push(days[key]);
         });
         
         $.each(groups, function(id, group) {
