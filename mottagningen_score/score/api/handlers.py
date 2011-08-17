@@ -17,7 +17,11 @@ class ScoreHandler(BaseHandler):
         score = {}
         if (date == "0"):
             groups = Group.objects.all()
-            days = Day.objects.filter(date__lt=currentDate()).order_by('date')
+            days_unchecked = Day.objects.filter(date__lt=currentDate()).order_by('date')
+            days = []
+            for d in days_unchecked: 
+                if len(Score.objects.filter(day=d)) > 0:
+                    days.append(d)
             for g in groups:
                 groupInfo = []
                 for d in days:
@@ -33,7 +37,11 @@ class ScoreHandler(BaseHandler):
                 score[g.name] = groupInfo
         
         daysInfo = {}
-        days = Day.objects.filter(date__lte=currentDate())
+        days_unchecked = Day.objects.filter(date__lt=currentDate()).order_by('date')
+        days = []
+        for d in days_unchecked: 
+            if len(Score.objects.filter(day=d)) > 0:
+                days.append(d)
         for d in days:
             daysInfo[d.date] = d.name
             
